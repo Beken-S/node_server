@@ -1,0 +1,43 @@
+body {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.item {
+  position: relative;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.directory::before {
+  content: '\1F5C0';
+  display: block;
+  position: absolute;
+  width: 30px;
+  transform: translateX(-120%);
+  text-align: center;
+}
+
+.file::before {
+  content: '\1F5CE';
+  display: block;
+  position: absolute;
+  width: 30px;
+  transform: translateX(-120%);
+  text-align: center;
+}
+
+.output {
+  display: flex;
+}
