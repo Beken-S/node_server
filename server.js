@@ -15,6 +15,12 @@ if (cluster.isMaster) {
       const { method, url } = request;
       const currentPath = path.join(__dirname, url);
 
+      if (!fs.existsSync(currentPath)) {
+        response.writeHead(200, { 'Content-Type': 'text/html' });
+        response.end('File or directory not found');
+        return;
+      }
+
       if (method === 'GET' && url === '/styles.css') {
         const readStream = fs.createReadStream(currentPath);
         response.writeHead(200, { 'Content-Type': 'text/css' });

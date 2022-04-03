@@ -20,7 +20,7 @@ function getPageMarkup(url, { backUrl, list }) {
         ${
           url === '/'
             ? ''
-            : `<li class="item directory"><a href="${API}${backUrl}">/..</a></li>`
+            : `<li class="item directory"><a href="${backUrl}">/..</a></li>`
         }
         ${getDirListMarkup(list)}
       </ul>
@@ -64,7 +64,7 @@ function getBackUrl(url) {
 
   splitUrl.pop();
 
-  return splitUrl.join('/');
+  return splitUrl.length > 1 ? splitUrl.join('/') : '/';
 }
 
 async function getDirList(url, dirPath) {
@@ -77,7 +77,7 @@ async function getDirList(url, dirPath) {
 
       acc.list.push({
         name: item,
-        url: `${API}${url === '/' ? '' : url}/${item}`,
+        url: path.join(url, item),
         isFile,
       });
 
